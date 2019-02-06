@@ -13,7 +13,7 @@ const client = new ApolloClient({
 });
 
 const PROPERTY_QUERY = gql`
-  query SingleProperty($id: String!) {
+  query SingleProperty($id: ID!) {
     property(where: { id: $id }) {
       id
       propertyAddress {
@@ -34,12 +34,13 @@ const PROPERTY_QUERY = gql`
       furnished
       bedrooms
       bathrooms
-      tenants {
+      tenants(orderBy: lead_DESC) {
         id
         name
         picture {
           url
         }
+        email
         phoneNumber
         lead
       }
@@ -50,13 +51,12 @@ const PROPERTY_QUERY = gql`
 class PropertyInfoWrapper extends Component {
   state = { id: getPathName() };
   render() {
-    console.log(getPathName());
     return (
       <div className="App">
         <ApolloProvider client={client}>
           <Query
             query={PROPERTY_QUERY}
-            variables={{ id: `cjrqsv2p5zb8u0a23an892lev` }}
+            variables={{ id: this.props.match.params.propertyId }}
           >
             {({ loading, data, error }) => {
               if (error) {

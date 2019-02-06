@@ -10,7 +10,6 @@ class Header extends Component {
     return window.location.pathname.includes("properties");
   };
   render() {
-    console.log(this.isProperty());
     const { title } = this.props;
     return (
       <Container>

@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../Global/Container";
 import Property from "../PropertyCard/Property";
 import LeaseTerms from "../LeaseTerms/LeaseTerms";
+import TenantsCard from "../TenantsCard/TenantsCard";
 
 class PropertyInfo extends React.Component {
   state = {};
@@ -25,16 +26,16 @@ class PropertyInfo extends React.Component {
           bedrooms={bedrooms}
           bathrooms={bathrooms}
           rent={rent}
-          tenants={tenants}
           address={propertyAddress}
           furnished={furnished}
         />
         <LeaseTerms
           rent={rent}
-          startDate={lease.startDate}
-          endDate={lease.endDate}
+          startDate={lease.startDate ? lease.startDate : `no`}
+          endDate={lease.endDate && lease.endDate}
           type={lease.leaseType}
         />
+        <TenantsCard tenants={tenants} />
       </Container>
     );
   }

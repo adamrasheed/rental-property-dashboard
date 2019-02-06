@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import Card from "../Global/Card";
-import Button from "../Global/Button";
+import { ButtonLink } from "../Global/Button";
 import InfoPropertySize from "../Global/InfoPropertySize";
 import PropertyAddress from "./PropertyAddress";
 import Features from "./Features";
@@ -52,24 +53,23 @@ class Property extends Component {
       tenants
     } = this.props;
 
-    console.log();
-    console.log(address);
+    // console.log(address);
 
     return (
       <Card flex Picture>
         <Img src={reImg} alt="" />
         <Content>
           {address && (
-            <a
+            <Link
               style={{
                 textDecoration: `none`,
                 color: `${colors.text}`,
                 width: `fit-content`
               }}
-              href={`/properties/${id}`}
+              to={`/properties/${id}`}
             >
               <PropertyAddress address={address} />
-            </a>
+            </Link>
           )}
           {rent && <Rent>{`$${numberWithCommas(rent)} /mo.`}</Rent>}
           <InfoPropertySize size={size} />
@@ -78,21 +78,17 @@ class Property extends Component {
             bathrooms={bathrooms}
             furnished={furnished}
           />
-          {tenants.length ? (
-            <Tenants tenants={tenants} />
-          ) : (
-            <Vacant>Vacant</Vacant>
-          )}
+          {tenants && tenants.length && <Tenants tenants={tenants} />}
+          {tenants && tenants.length === 0 && <Vacant>Vacant</Vacant>}
           {address && (
-            <Button
-              as="a"
-              href={`/properties/${id}`}
-              primary
-              large
+            <ButtonLink
+              to={`/properties/${id}`}
+              primary="true"
+              large="true"
               style={{ margin: `auto 0 1rem` }}
             >
               Details
-            </Button>
+            </ButtonLink>
           )}
         </Content>
       </Card>
@@ -108,7 +104,7 @@ Property.propTypes = {
   bedrooms: PropTypes.number,
   bathrooms: PropTypes.number,
   furnished: PropTypes.bool,
-  tenants: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+  tenants: PropTypes.array
 };
 
 export default Property;

@@ -28,8 +28,6 @@ const PROPS_QUERY = gql`
       tenants {
         id
         name
-        phoneNumber
-        email
         lead
         picture {
           id

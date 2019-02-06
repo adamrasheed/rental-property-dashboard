@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { colors } from "../../Styles";
+import { formatPhoneNumber } from "../../utils";
 
 const StyledTenant = styled.div`
   display: flex;
@@ -64,9 +66,21 @@ const Tenant = ({ name, email, lead, phoneNumber, picture }) => (
         </a>
       </TenantContentValue>
 
-      <TenantContentValue>{phoneNumber}</TenantContentValue>
+      {phoneNumber && (
+        <TenantContentValue>
+          {formatPhoneNumber(phoneNumber)}
+        </TenantContentValue>
+      )}
     </TenantContent>
   </StyledTenant>
 );
+
+Tenant.propType = {
+  name: PropTypes.string,
+  email: PropTypes.string,
+  lead: PropTypes.bool,
+  phoneNumber: PropTypes.number,
+  picture: PropTypes.object
+};
 
 export default Tenant;

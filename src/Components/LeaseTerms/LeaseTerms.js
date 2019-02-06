@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Card, { CardTitle } from "../Global/Card";
 
-import { formatMoney, numberWithCommas } from "../../utils";
+import { formatMoney } from "../../utils";
 import { colors, P } from "../../Styles";
 import LeaseDates from "./LeaseDates";
 
@@ -31,7 +31,7 @@ const LeaseTerms = ({ rent, startDate, endDate, type }) => {
       <P light small style={{ padding: `0 2rem`, margin: `0.5rem 0 1rem` }}>
         Monthly Rent
       </P>
-      <LeaseDates startDate={startDate} endDate={endDate} type={type} />
+      <LeaseDates startDate={startDate} endDate={endDate} leaseType={type} />
       <HR />
     </Card>
   );

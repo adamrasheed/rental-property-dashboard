@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Tenant from "./Tenant";
+import Tenant from "../Global/Tenant";
 
 const StyledTenants = styled.div`
   font-size: 1rem;
