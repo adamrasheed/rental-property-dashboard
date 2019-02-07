@@ -13,7 +13,9 @@ const Container = Styled.div`
 	align-items: stretch;
 	flex-wrap: wrap;
 	`}
-	${props => props.flexColumn && `flex-direction: column`}
+	${props =>
+    props.flexColumn &&
+    `flex-direction: column; max-height: 100vh; align-items: flex-start; justify-content: flex-start;`}
 `;
 
 export default Container;
