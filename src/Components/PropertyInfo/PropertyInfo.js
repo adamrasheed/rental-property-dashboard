@@ -19,7 +19,7 @@ class PropertyInfo extends React.Component {
       propertyAddress
     } = this.props;
     return (
-      <Container flex flexColumn>
+      <Container columns>
         <Property
           id={id}
           size={size}

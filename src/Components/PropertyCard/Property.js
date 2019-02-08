@@ -57,7 +57,12 @@ class Property extends Component {
 
     return (
       <Card flex Picture>
-        <Img src={reImg} alt="" />
+        <Link
+          to={`/properties/${id}`}
+          style={{ display: `block`, textDecoration: `none` }}
+        >
+          <Img src={reImg} alt="" />
+        </Link>
         <Content>
           {address && (
             <Link
