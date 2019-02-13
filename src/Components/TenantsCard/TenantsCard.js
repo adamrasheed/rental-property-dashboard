@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Card, { CardTitle } from "../Global/Card";
 import Tenant from "../Global/Tenant";
+import Button from "../Global/Button";
 
 const TenantsCard = ({ tenants }) => {
   return (
@@ -21,6 +22,11 @@ const TenantsCard = ({ tenants }) => {
               picture={tenant.picture}
             />
           ))}
+        {tenants.length == 0 && (
+          <Button style={{ marginTop: `1rem` }} primary>
+            Add Tenants
+          </Button>
+        )}
       </CardTitle>
     </Card>
   );

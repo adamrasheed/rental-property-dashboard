@@ -7,6 +7,8 @@ import PropertyInfo from "../PropertyInfo/PropertyInfo";
 import Header from "../Global/Header";
 
 import { getPathName } from "../../utils";
+import LoadingCard from "../Global/LoadingCard";
+import Container from "../Global/Container";
 
 const client = new ApolloClient({
   uri: `https://api-uswest.graphcms.com/v1/cjrqs43640jmw01elr4q3nu1y/master`
@@ -64,7 +66,12 @@ class PropertyInfoWrapper extends Component {
                 return <p>noo...</p>;
               }
               if (loading) {
-                return "loading...";
+                return (
+                  <Container>
+                    <Header title="Loading..." />
+                    <LoadingCard />
+                  </Container>
+                );
               }
               const {
                 id,

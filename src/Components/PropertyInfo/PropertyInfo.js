@@ -35,7 +35,7 @@ class PropertyInfo extends React.Component {
           endDate={lease.endDate && lease.endDate}
           type={lease.leaseType}
         />
-        <TenantsCard tenants={tenants} />
+        <TenantsCard tenants={tenants} addTenant={true} />
       </Container>
     );
   }

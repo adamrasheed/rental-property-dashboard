@@ -38,6 +38,11 @@ const Vacant = styled.p`
   font-size: 1rem;
   line-height: 1;
   color: #c0392b;
+  background: #f9eed1;
+  width: fit-content;
+  padding: 3px 8px 4px;
+  border-radius: 3px;
+  font-variant-caps: all-small-caps;
 `;
 
 class Property extends Component {
@@ -83,7 +88,7 @@ class Property extends Component {
             bathrooms={bathrooms}
             furnished={furnished}
           />
-          {tenants && tenants.length && <Tenants tenants={tenants} />}
+          {tenants && tenants.length > 0 && <Tenants tenants={tenants} />}
           {tenants && tenants.length === 0 && <Vacant>Vacant</Vacant>}
           {address && (
             <ButtonLink

@@ -5,6 +5,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
 import Header from "../Global/Header";
+import LoadingCard from "../Global/LoadingCard";
 
 const client = new ApolloClient({
   uri: `https://api-uswest.graphcms.com/v1/cjrqs43640jmw01elr4q3nu1y/master`
@@ -48,7 +49,7 @@ class Home extends Component {
             <Query query={PROPS_QUERY}>
               {({ loading, data: { properties } }) => {
                 if (loading) {
-                  return `loading...`;
+                  return <LoadingCard />;
                 }
                 return properties.map(
                   ({
